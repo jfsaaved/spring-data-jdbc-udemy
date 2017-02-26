@@ -7,11 +7,27 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jfsaaved.service.PostService;
+
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class HomeController {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private PostService postService;
+	
+	@Autowired
+	public HomeController(PostService postService){
+		this.postService = postService;
+	}
+	
+	@RequestMapping("/")
+	public String home(Model model){
+		model.addAttribute("post", postService.getLatestPost());
+		return "index";
+	}
 	
 }

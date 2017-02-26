@@ -16,14 +16,14 @@ public class Post {
 		
 	}
 	
-	public Post(long id, String title, String body, String teaser, String slug, Date postedOn, Author author) {
+	public Post(int id, String title, String teaser, String body, String slug, Date postedOn, int authorId) {
 		this.id = id;
 		this.setTitle(title);
 		this.setBody(body);
 		this.setTeaser(teaser);
 		this.setSlug(slug);
 		this.setPostedOn(postedOn);
-		this.setAuthor(author);
+		this.setAuthor(authorId);
 	}
 	
 	public long getId() {
